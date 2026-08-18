@@ -88,15 +88,6 @@ android {
         buildConfigField("String", "BUILD_DATE", "\"$buildDate\"")
     }
 
-    signingConfigs {
-        create("release") {
-            storeFile = file("../TypeQ25-release-key.jks")
-            storePassword = "typeq25pass"
-            keyAlias = "typeq25-key"
-            keyPassword = "typeq25pass"
-        }
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -104,7 +95,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
             // Disable lint for release to avoid file lock issues
             isDebuggable = false
         }
